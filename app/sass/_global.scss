@@ -1,0 +1,59 @@
+body {
+    //@extend %FontName-400;
+}
+
+@use "sass:math"; // не забываем добавить эту строку, чтобы функции math в миксине работали
+@mixin recolor($color: #000) {
+    $r: math.div(red($color), 255);
+    $g: math.div(green($color), 255);
+    $b: math.div(blue($color), 255);
+		$a: alpha($color);
+   
+    // фолбек(fallback) на случай, если браузер не поддерживает data-url
+    $lightness: lightness($color);
+    filter: saturate(0%) brightness(0%) invert($lightness) opacity($a);
+  
+    // фильтр цвета
+    $svg-filter-id: "recolor";
+    filter: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg">\
+      <filter id="#{$svg-filter-id}" color-interpolation-filters="sRGB">\
+        <feColorMatrix type="matrix" values="\
+         0 0 0 0 #{$r}\
+         0 0 0 0 #{$g}\
+         0 0 0 0 #{$b}\
+         0 0 0 #{$a} 0\
+        "/>\
+      </filter>\
+    </svg>\
+    ##{$svg-filter-id}');
+  }
+
+.button {
+    display: inline-block; /*Переопределяем для ссылок*/
+    appearance: none; /*сбрасываем стандартный вид в браузере*/
+    transition: background-color 0.3s ease, box-shadow 0.4s linear;
+    padding: 8px 16px;
+    border: 0; /*убираем стандартные стили границ*/
+    border-radius: 5px;
+    background-color: green;
+    cursor: pointer;
+    color: #fff;
+    font: inherit; /*наследуем свойства шрифтов от родителя*/
+    font-size: 16px;
+    line-height: 1;
+
+    &:focus {
+        outline: 0; /*убираем стандартную рамку вокруг элемента в фокусе*/
+        box-shadow: 0 0 0 4px lightgreen;
+    }
+
+    &:hover {
+        background-color: darkgreen;
+    }
+
+    &:active {
+        box-shadow: inset 0 0 0 30px rgba(255,255,255,0.1);
+        transform: translateY(2px);
+    }
+}
