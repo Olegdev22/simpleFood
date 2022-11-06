@@ -1,9 +1,23 @@
-$accent: #000;
+$accent: #f9faff;
+$silver-200: #ececec;
+$grey: #c2c2c2;
+$orange: #ff6838;
 
-$default: #000;
+$title: #363853;
+$default: #31352b;
 
-/*
-%FontName-400 {
-    font-family: 'FontName', sans-serif;
+%rubiklight-300 {
+    font-family: 'Rubik-Light', 'Arial', 'Helvetica', sans-serif;
+    font-weight: 300;
+
+}
+
+%rubikregular-400 {
+    font-family: 'Rubik-Regular', 'Arial', 'Helvetica', sans-serif;
     font-weight: 400;
-}*/
+}
+
+%rubikmedium-500 {
+    font-family: 'Rubik-Medium', 'Arial', 'Helvetica', sans-serif;
+    font-weight: 600;
+}

@@ -3,6 +3,494 @@
 @import "reset";
 @import "global";
 
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.header {
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        padding: 58px 0;
+    }
+}
+
+.logo {
+    &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+        border-radius: 5px;
+    }
+    &:hover {
+        opacity: 0.7;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+    }
+    &:active {
+        opacity: 0.4;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+    }
+}
+
+.menu  {
+    display: flex;
+    align-items: center;
+    &__list {
+        display: flex;
+    }
+    &__item {
+        margin-right: 45px;
+        &:last-child {
+            margin-right: 56px;
+        }
+    }
+    &__link {
+        font-size: 18px;
+        line-height: 1.2;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: color 0.4s ease, box-shadow 0.4s linear;
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+            border-radius: 5px;
+        }
+        &:hover {
+            color: $orange;
+        }
+        &:active {
+            color: $default;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+            text-shadow: 2px 2px 5px rgba(49, 53, 43, 0.5);
+        }
+        &--active {
+            color: $orange;
+        }
+    }
+}
+
+.form {
+    margin-right: 15px;
+    &__btn {
+        display: block;
+        cursor: pointer;
+        padding: 10px 10px 3px 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: transparent;
+        position: relative;
+        transition: color 0.4s ease,
+        background-color 0.4s ease,
+        box-shadow 0.4s linear;
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+            border-radius: 5px;
+        }
+        &:hover {
+            background-color: #FF7A50;
+        }
+        &:active {
+            background: #FFF2ED;
+            box-shadow: 0 0 0 2px rgba(255, 242, 237, 1);
+        }
+    }
+    &__svg {
+        width: 24px;
+        height: 23px;
+    }
+
+    &__btn:hover .form__svg {
+        @include recolor($accent);
+    }
+    &__btn:active .form__svg {
+        @include recolor($default);
+    }
+}
+
+.menu-user {
+    position: relative;
+    top: 3px;
+
+    &__link {
+        padding: 13px 12px 8px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.4s ease,
+        background-color 0.4s ease,
+        box-shadow 0.4s linear;
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+            border-radius: 5px;
+        }
+        &:hover {
+            background-color: #FF7A50;
+        }
+        &:active {
+            background: #FFF2ED;
+            box-shadow: 0 0 0 2px rgba(255, 242, 237, 1);
+        }
+    }
+    &__svg {
+        width: 18px;
+        height: 17px;
+    }
+    &__num {
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: $orange;
+        top: 5px;
+        right: 3px;
+        font-size: 10px;
+        text-align: center;
+        color: #fff;
+    }
+    &__link:hover .menu-user__svg {
+        @include recolor(#fff);
+    }
+    &__link:hover .menu-user__num {
+        background-color: #fff;
+        color: #FF7A50;
+    }
+    &__link:active .menu-user__svg {
+        @include recolor($default);
+    }
+    &__link:active .menu-user__num {
+        background-color: $orange;
+        color: #fff;
+    }
+}
+
+.main {
+    flex: 1;
+}
+
+.fast {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 120px;
+    &__inner {
+        max-width: 450px;
+
+    }
+    &__title, .fast__title span {
+        @extend %rubikmedium-500;
+        font-size: 66px;
+        line-height: 1.3;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+    &__title {
+        color: $title;
+        & span {
+            color: $orange;
+        }
+    }
+    & p {
+        margin-bottom: 20px;
+    }
+    &__img {
+        width: 560px;
+    }
+}
+
+.button {
+    margin-right: 34px;
+}
+
+.popular {
+    margin-bottom: 120px;
+    &__title {
+        margin-bottom: 60px;
+        text-align: center;
+        display: block;
+    }
+    &__filter {
+        display: flex;
+        justify-content: start;
+        margin-bottom: 45px;
+    }
+    &__btn {
+        @extend %rubikregular-400;
+        line-height: 1.3;
+        padding: 13px 32px;
+        position: relative;
+        cursor: pointer;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 0 0 1px #ececec;
+        border-radius: 5px;
+        transition: color 0.4s ease,
+        background-color 0.4s ease,
+        box-shadow 0.4s linear;
+        margin-right: 20px;
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+        }
+        &:hover {
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+            background-color: rgba(255, 122, 80, 0.1);
+            color: $orange;
+        }
+        &:active {
+            background-color: rgba(255, 255, 255, 1);
+            box-shadow: inset 0px -5px 12px rgba(255, 104, 56, 0.2);
+            color: $title;
+        }
+        &:hover .popular__svg {
+            @include recolor($orange);
+            color: $orange;
+        }
+        &:active .popular__svg {
+            @include recolor($default);
+            color: $title;
+        }
+    }
+    &__svg {
+        width: 44px;
+        height: 44px;
+        margin-right: 10px;
+        vertical-align: middle;
+        @include recolor($default);
+    }
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 30px;
+        margin-bottom: 60px;
+    }
+    &__btn-show-more {
+        display: inline-block;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.mixitup-control-active .popular__svg {
+    @include recolor(#fff);
+}
+
+.mixitup-control-active {
+    background-color: $orange;
+    color: white;
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 15px;
+    box-shadow: 0 0 0 1px $silver-200;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: box-shadow 0.4s ease;
+    &:hover {
+        box-shadow: 0 0 0 1px $orange;
+    }
+    &__img {
+        margin-bottom: 10px;
+    }
+
+    &__desc {
+        font-size: 15px;
+        line-height: 1.2;
+        color: $default;
+        margin-bottom: 10px;
+    }
+    &__price {
+        @extend %rubikmedium-500;
+        font-size: 15px;
+        line-height: 1.4;
+        color: $title;
+        margin-bottom: 10px;
+    }
+    &__button {
+        padding: 7px 16px;
+        font-size: 14px;
+        line-height: 1.3;
+        //display: inline-block;
+        //position: relative;
+        //left: 50%;
+        transform: translateX(16%);
+    }
+}
+
+
+
+.footer {
+    &__inner {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 70px;
+        padding-bottom: 61px;
+    }
+    &__list:last-child {
+        padding-left: 10px
+    }
+    &__item {
+        list-style: none;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    &__link {
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 1.3;
+        letter-spacing: 0.01em;
+        &::after {
+            position: absolute;
+            content: "";
+            background-position: center;
+            background-repeat: no-repeat;
+            left: -29px;
+            bottom: 4px;
+        }
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+            border-radius: 5px;
+        }
+    }
+    &__form {
+        width: 200px;
+        margin-right: 0;
+    }
+    &__logo {
+        display: block;
+        margin-bottom: 30px;
+    }
+    &__input {
+        padding: 13px 15px;
+        background-color: #fff;
+        font-size: 14px;
+        line-height: 1.3;
+        color: $default;
+        border: 1px solid $grey;
+        border-radius: 5px;
+        margin-bottom: 12px;
+        width: 100%;
+        transition: box-shadow 0.4s ease;
+        &::placeholder {
+            color: $grey;
+            opacity: 0.9;
+        }
+        &:focus {
+            outline: 0;
+            border: 1px solid $accent;
+            box-shadow: 0 0 0 2px $orange;
+        }
+    }
+    &__button {
+        display: flex;
+        align-items: center;
+        padding: 13px 38px 13px 43px;
+        @extend %rubikmedium-500;
+        font-size: 14px;
+        line-height: 1.3;
+        &:hover .footer__svg {
+            @include recolor($orange);
+        }
+
+        &:focus .footer__svg {
+            @include recolor($orange);
+        }
+    }
+    &__svg {
+        @include recolor(#fff);
+        width: 14px;
+        height: 13px;
+        margin-right: 15px;
+    }
+
+    &__link-loc::after {
+        width: 15px;
+        height: 18px;
+        left: -25px;
+        background-image: url("../images/sprite.svg#icon-location");
+    }
+    &__link-call::after {
+        width: 19px;
+        height: 19px;
+        background-image: url("../images/sprite.svg#icon-call");
+    }
+    &__link-mess::after {
+        width: 20px;
+        height: 18px;
+        background-image: url("../images/sprite.svg#icon-message");
+    }
+    &__copyriter {
+        border-top: 1px solid $grey;
+        padding: 30px 0;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+.social {
+    display: flex;
+    position: relative;
+    left: -27px;
+    &__link {
+        width: 39px;
+        height: 39px;
+        background-color: $silver-200;
+        position: relative;
+        border-radius: 50%;
+        transition: color 0.4s ease,
+        background-color 0.4s ease,
+        box-shadow 0.4s linear;
+        &:focus {
+            outline: 0;
+            background-color: #fff2ed;
+            box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+        }
+        &:hover {
+            background-color: $orange;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255);
+        }
+        &:active {
+            background-color: #fff2ed;
+        }
+        &:hover .social__svg {
+            @include recolor(#fff);
+        }
+        &:active .social__svg {
+            @include recolor($orange);
+        }
+        &:not(:last-child) {
+            margin-right: 13px;
+        }
+    }
+    &__svg {
+        width: 20px;
+        height: 16px;
+        position: absolute;
+        left: 52%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+
+
+
+
 
 
 

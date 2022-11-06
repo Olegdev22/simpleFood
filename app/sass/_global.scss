@@ -1,8 +1,15 @@
+@use "sass:math"; // не забываем добавить эту строку, чтобы функции math в миксине работали
+
 body {
-    //@extend %FontName-400;
+    @extend %rubikregular-400;
+    //font-family: "Rubik", "Arial", "Helvetica", sans-serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: $default;
+    background-color: $accent;
 }
 
-@use "sass:math"; // не забываем добавить эту строку, чтобы функции math в миксине работали
+
 @mixin recolor($color: #000) {
     $r: math.div(red($color), 255);
     $g: math.div(green($color), 255);
@@ -29,31 +36,95 @@ body {
     ##{$svg-filter-id}');
   }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
 .button {
-    display: inline-block; /*Переопределяем для ссылок*/
-    appearance: none; /*сбрасываем стандартный вид в браузере*/
+    display: inline-block;
+    appearance: none;
     transition: background-color 0.3s ease, box-shadow 0.4s linear;
-    padding: 8px 16px;
-    border: 0; /*убираем стандартные стили границ*/
-    border-radius: 5px;
-    background-color: green;
+    padding: 12px 32px;
+    border: 0;
+    border-radius: 6px;
+    background-color: $orange;
     cursor: pointer;
     color: #fff;
     font: inherit; /*наследуем свойства шрифтов от родителя*/
-    font-size: 16px;
-    line-height: 1;
+    font-size: 18px;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
 
     &:focus {
-        outline: 0; /*убираем стандартную рамку вокруг элемента в фокусе*/
-        box-shadow: 0 0 0 4px lightgreen;
+        outline: 0;
+        box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+        background-color: rgba(255, 122, 80, 0.1);
+        color: $orange;
+
     }
 
     &:hover {
-        background-color: darkgreen;
+        box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+        background-color: $accent;
+        color: $orange;
     }
 
     &:active {
-        box-shadow: inset 0 0 0 30px rgba(255,255,255,0.1);
-        transform: translateY(2px);
+        box-shadow: 0 0 0 2px rgba(255, 242, 237, 1);
+        background-color: rgba(255, 122, 80, 0.1);
     }
+}
+
+p, .btn-read-more {
+     @extend %rubikregular-400;
+    font-size: 20px;
+    line-height: 1.5;
+    color: $default;
+}
+
+.btn-read-more, .btn-show-more {
+    text-decoration: none;
+    color: $default;
+    border-bottom: 1px solid $title;
+    transition: border-bottom-color 0.4s ease, color 0.3s ease, box-shadow 0.4s linear;
+    &:focus {
+        border-bottom: 1px solid $accent;
+        outline: 0;
+        box-shadow: 0 0 0 2px rgba(255, 104, 56, 0.7);
+        border-radius: 5px;
+    }
+    &:hover {
+        border-bottom: 1px solid $accent;
+        color: $orange;
+    }
+    &:active {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7);
+        text-shadow: 2px 2px 5px rgba(54, 56, 83, 0.5);
+        color: $title;
+    }
+}
+
+.btn-show-more {
+    &:focus {
+        border-bottom: 1px solid $title;
+    }
+    &:active {
+        border-bottom: 1px solid $accent;
+    }
+}
+
+.title {
+    @extend %rubikmedium-500;
+    font-size: 36px;
+    line-height: 1.3;
+    color: $title;
 }
